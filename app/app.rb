@@ -13,7 +13,7 @@ class BrainwritingApp < Sinatra::Base
 	end
 
   get '/' do
-    return "Welcome to Brainwriting Application"
+    return "<h1>Welcome to Brainwriting Application</h1><b>Main boards count: #{Idea.count}</b>"
   end
 
   get '/:idea_name' do
@@ -26,6 +26,6 @@ class BrainwritingApp < Sinatra::Base
       return 500
     end
 
-    "<h1>Board Title: #{idea.name}</h1>"
+    "<h1>Board Title: #{idea.name}</h1> Boards \# #{Idea.count}"
   end
 end

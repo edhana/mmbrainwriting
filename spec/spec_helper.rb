@@ -21,7 +21,7 @@ require 'app'
 
 module RSpecMixin
   include Rack::Test::Methods
-  def app() BrainWritingApp end
+  def app() BrainwritingApp end
 end
 
 RSpec.configure { |c| c.include RSpecMixin }

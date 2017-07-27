@@ -20,6 +20,23 @@ describe Idea do
     expect( Idea.count ).to be == 1
   end
 
+  it "recovered by name" do
+    name = 'Idea 1'
+    expected_idea = Idea.new(name)
+    retrieved_idea = Idea.find_by_name name
+    expect(retrieved_idea).to be(expected_idea)
+  end
+
+  it "raise error if a search was performed without any saved ideas" do
+    expect{Idea.find_by_name("Test name")}.to raise_error(KeyError)
+  end
+
+  it "return nil if searched by name with an unknow idea name" do
+    name = 'Idea 2'
+    Idea.new 'Test name'
+    expect(Idea.find_by_name(name)).to be_nil
+  end
+
   describe "Idea Childs" do
     before(:each) do
       @idea = Idea.new "Master Mind Meeting"
@@ -27,7 +44,7 @@ describe Idea do
 
     it "added one to a default idea instance" do
       @idea.childs << Idea.new("Child 1")
-      expect(@idea.childs.count).to be 1 
+      expect(@idea.childs.count).to be 1
     end
   end
 end

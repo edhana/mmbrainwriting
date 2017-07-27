@@ -23,4 +23,17 @@ class Idea
   def self.destroy_all
     @@ideas.clear 
   end
+
+  def self.find_by_name(name)
+    raise KeyError if @@ideas.empty?
+
+    resp_array = @@ideas.select{ |obj|  obj.name == name }
+    if resp_array.size == 0
+      return nil
+    elsif resp_array.size > 1
+      raise RuntimeError("Inconsistency in the unique name for an Idea")
+    else
+      return resp_array[0]
+    end
+  end
 end

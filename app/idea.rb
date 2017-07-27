@@ -1,6 +1,5 @@
 # idea model
 require 'json'
-require 'pry'
 require 'application_helper'
 
 class Idea

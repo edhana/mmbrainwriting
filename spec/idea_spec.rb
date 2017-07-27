@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'idea'
+require 'date'
 
 describe Idea do
 
@@ -8,7 +9,12 @@ describe Idea do
   end
 
   it "instance with only the name" do
+    date = Time.now
     expect(Idea.new "Master Mind Meeting").not_to be_nil
+
+    # verify the creation date
+    expect(Idea.all.first.created_at.to_i).to be_within(1).of(date.to_i)
+    expect(Idea.all.first.updated_at.to_i).to be_within(1).of(date.to_i)
   end
 
   it "instance with nil name" do

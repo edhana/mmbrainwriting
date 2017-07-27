@@ -1,1 +1,1 @@
-web: bundle exec rackup -p 80 --env production
+web: bundle exec rackup --env production
